@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="am">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>የቤላ ጤና ጣቢያ IT ክፍል - አመታዊ እቅድ</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+    
+    /* 1. Body & Background with Beautiful Small Flowers Pattern */
+    body { 
+      background-color: #0f172a; 
+      /* የሚያምር የአበባ ንድፍ ከጀርባ */
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill='%23f472b6' fill-opacity='0.18'%3E%3Cpath d='M40 32c-2-4-7-5-10-2s-2 8 2 10c-4 2-5 7-2 10s8 2 10-2c2 4 7 5 10 2s2-8-2-10c4-2 5-7 2-10s-8-2-10 2z'/%3E%3Ccircle cx='40' cy='40' r='3' fill='%23fbbf24' fill-opacity='0.3'/%3E%3C/g%3E%3Cg fill='%2338bdf8' fill-opacity='0.15'%3E%3Cpath d='M0 72c-2-4-7-5-10-2s-2 8 2 10c-4 2-5 7-2 10s8 2 10-2c2 4 7 5 10 2s2-8-2-10c4-2 5-7 2-10s-8-2-10 2z'/%3E%3Ccircle cx='0' cy='80' r='3' fill='%23fbbf24' fill-opacity='0.3'/%3E%3C/g%3E%3Cg fill='%2338bdf8' fill-opacity='0.15'%3E%3Cpath d='M80 0c-2-4-7-5-10-2s-2 8 2 10c-4 2-5 7-2 10s8 2 10-2c2 4 7 5 10 2s2-8-2-10c4-2 5-7 2-10s-8-2-10 2z'/%3E%3Ccircle cx='80' cy='80' r='3' fill='%23fbbf24' fill-opacity='0.3'/%3E%3C/g%3E%3C/svg%3E");
+      color: #333; 
+      min-height: 100vh; 
+      display: flex; 
+      justify-content: center; 
+      align-items: center; 
+      padding: 20px; 
+      position: relative;
+    }
+
+    /* Outer Wrapper for Login and Floating Tech Quotes */
+    .login-wrapper {
+      position: relative;
+      width: 100%;
+      max-width: 900px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Decorative Tech Floating Badges */
+    .tech-quote {
+      position: absolute;
+      background: rgba(30, 41, 59, 0.85);
+      color: #38bdf8;
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      padding: 10px 16px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      backdrop-filter: blur(5px);
+      max-width: 220px;
+      text-align: center;
+      line-height: 1.4;
+      animation: floatAnim 4s ease-in-out infinite alternate;
+    }
+
+    .quote-top-left { top: -20px; left: 20px; }
+    .quote-top-right { top: -10px; right: 20px; animation-delay: 1s; }
+    .quote-bottom-left { bottom: -20px; left: 10px; animation-delay: 2s; }
+    .quote-bottom-right { bottom: -15px; right: 10px; animation-delay: 3s; }
+
+    @keyframes floatAnim {
+      0% { transform: translateY(0px); }
+      100% { transform: translateY(-8px); }
+    }
+
+    /* Responsive adjustments for mobile */
+    @media (max-width: 768px) {
+      .tech-quote { display: none; }
+    }
+
+    /* 2. Login Card Style */
+    .login-card { 
+      background: #ffffff; 
+      border-radius: 16px; 
+      box-shadow: 0 15px 35px rgba(0,0,0,0.4); 
+      width: 100%; 
+      max-width: 420px; 
+      overflow: hidden; 
+      text-align: center; 
+      position: relative;
+      z-index: 10;
+    }
+    .header-img { width: 100%; height: 200px; object-fit: cover; }
+    .form-box { padding: 25px; }
+    .form-box h2 { font-size: 20px; color: #1e293b; margin-bottom: 15px; }
+    .input-field { margin-bottom: 15px; text-align: left; }
+    .input-field label { display: block; font-size: 13px; font-weight: bold; margin-bottom: 5px; color: #475569; }
+    .input-field input, .input-field textarea { width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 14px; outline: none; }
+    .input-field input:focus, .input-field textarea:focus { border-color: #2563eb; }
+    .btn { width: 100%; padding: 12px; background: #2563eb; color: white; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; font-size: 15px; transition: 0.3s; }
+    .btn:hover { background: #1d4ed8; }
+    .error { color: #dc2626; background: #fef2f2; border: 1px solid #fecaca; padding: 10px; border-radius: 6px; font-size: 13px; margin-bottom: 12px; display: none; }
+    
+    /* 3. Animated Welcome Screen */
+    #welcomeContainer { display: none; background: #ffffff; width: 100%; max-width: 500px; padding: 40px 20px; border-radius: 16px; box-shadow: 0 10px 25px rgba(0,0,0,0.3); text-align: center; position: relative; z-index: 10; }
+    .welcome-circle {
+      width: 160px;
+      height: 160px;
+      margin: 0 auto 25px auto;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #2563eb, #3b82f6, #06b6d4);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-size: 20px;
+      font-weight: bold;
+      box-shadow: 0 0 20px rgba(37, 99, 235, 0.5);
+      animation: spinBorder 4s linear infinite, pulseGlow 2s ease-in-out infinite alternate;
+    }
+    .welcome-text { font-size: 22px; color: #0f172a; margin-bottom: 10px; font-weight: bold; }
+    .sub-text { font-size: 14px; color: #64748b; margin-bottom: 25px; }
+
+    @keyframes spinBorder {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    @keyframes pulseGlow {
+      0% { box-shadow: 0 0 15px rgba(37, 99, 235, 0.4); transform: scale(1); }
+      100% { box-shadow: 0 0 30px rgba(37, 99, 235, 0.8); transform: scale(1.05); }
+    }
+
+    /* 4. Document/Plan Container Style */
+    #planContainer { display: none; background: #ffffff; width: 100%; max-width: 1050px; padding: 40px; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.3); position: relative; z-index: 10; }
+    .plan-header { border-bottom: 2px solid #2563eb; padding-bottom: 15px; margin-bottom: 25px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+    .plan-header h1 { font-size: 20px; color: #0f172a; line-height: 1.4; flex: 1; }
+    .header-actions { display: flex; gap: 10px; }
+    
+    .edit-btn { padding: 8px 16px; background: #16a34a; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 13px; font-weight: bold; transition: 0.3s; }
+    .edit-btn:hover { background: #15803d; }
+    .logout-btn { padding: 8px 16px; background: #dc2626; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 13px; font-weight: bold; transition: 0.3s; }
+    .logout-btn:hover { background: #b91c1c; }
+    
+    .meta-info { background: #f8fafc; padding: 12px; border-radius: 6px; margin-bottom: 25px; font-size: 14px; border: 1px solid #e2e8f0; }
+    .plan-content { font-size: 14px; line-height: 1.8; color: #334155; padding: 10px; border-radius: 8px; transition: 0.3s; }
+    
+    .editing-active { background: #fefce8; border: 2px dashed #eab308; outline: none; }
+    
+    .plan-content h2 { font-size: 16px; color: #1e293b; margin-top: 25px; margin-bottom: 10px; border-left: 4px solid #2563eb; padding-left: 10px; background: #f1f5f9; padding-top: 4px; padding-bottom: 4px; }
+    .plan-content h3 { font-size: 15px; color: #0f172a; margin-top: 15px; margin-bottom: 5px; }
+    .plan-content ul, .plan-content ol { margin-left: 25px; margin-bottom: 15px; }
+    .plan-content li { margin-bottom: 5px; }
+    .plan-content table { width: 100%; border-collapse: collapse; margin-top: 15px; margin-bottom: 20px; }
+    .plan-content th, .plan-content td { border: 1px solid #cbd5e1; padding: 8px 10px; text-align: left; font-size: 13px; }
+    .plan-content th { background: #f1f5f9; color: #0f172a; font-weight: bold; }
+    .center-text { text-align: center; }
+    .signature-section { margin-top: 30px; padding-top: 20px; border-top: 1px dashed #cbd5e1; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
+    .sig-box { width: 45%; min-width: 280px; }
+
+    /* 5. Feedback Section Style */
+    .feedback-section { margin-top: 40px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 25px; }
+    .feedback-section h2 { border-left: none !important; background: transparent !important; padding-left: 0 !important; margin-top: 0 !important; color: #0f172a; }
+    .thanks-msg { background: #dcfce7; color: #166534; border: 1px solid #bbf7d0; padding: 15px; border-radius: 6px; text-align: center; font-weight: bold; display: none; font-size: 15px; }
+  </style>
+</head>
+<body>
+
+  <!-- LOGIN WRAPPER WITH FLOATING QUOTES -->
+  <div class="login-wrapper" id="loginWrapper">
+    
+    <!-- Floating Tech Quotes -->
+    <div class="tech-quote quote-top-left">💡 "ቴክኖሎጂ የወደፊቱን ህይወት ዛሬ የመስሪያ መሳሪያ ነው!"</div>
+    <div class="tech-quote quote-top-right">⚡ "Digital Transformation in Healthcare 🏥"</div>
+    <div class="tech-quote quote-bottom-left">🔐 "Safe Data, Better Healthcare System!"</div>
+    <div class="tech-quote quote-bottom-right">🚀 "በዘመናዊ IT የተደገፈ ቀልጣፋ የጤና አገልግሎት!"</div>
+
+    <!-- 1. LOGIN CARD SECTION -->
+    <div class="login-card" id="loginCard">
+      <img src="https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=800&q=80" alt="All-in-One Computer" class="header-img">
+      <div class="form-box">
+        <h2>የቤላ ጤና ጣቢያ IT ክፍል - Login</h2>
+        <div id="errorMsg" class="error">የተሳሳተ የተጠቃሚ ስም ወይም ፓስወርድ!</div>
+        <form id="loginForm" onsubmit="return handleLogin(event)">
+          <div class="input-field">
+            <label for="username">የተጠቃሚ ስም (Username)</label>
+            <input type="text" id="username" autocomplete="off" required>
+          </div>
+          <div class="input-field">
+            <label for="password">ፓስወርድ (Password)</label>
+            <input type="password" id="password" required>
+          </div>
+          <button type="submit" class="btn">ግበአ / Login</button>
+        </form>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- 2. ANIMATED WELCOME SCREEN -->
+  <div id="welcomeContainer">
+    <div class="welcome-circle">
+      <span>በደስታ መጡ!</span>
+    </div>
+    <div class="welcome-text">እንኳን ደህና መጡ!</div>
+    <div class="sub-text">ወደ ቤላ ጤና ጣቢያ የኢንፎርሜሽን ቴክኖሎጂ እና መረጃ አስተዳደር ክፍል አመታዊ ስትራቴጂካዊ የስራ እቅድ ፖርታል በሰላም መጡ።</div>
+    <button class="btn" onclick="showPlan()">እቅዱን ለማየት ይጫኑ</button>
+  </div>
+
+  <!-- 3. FULL IT PLAN DOCUMENT SECTION -->
+  <div id="planContainer">
+    <div class="plan-header">
+      <h1>የቤላ ጤና ጣቢያ የኢንፎርሜሽን ቴክኖሎጂ (IT) እና መረጃ አስተዳደር ክፍል አመታዊ ስትራቴጂካዊ የስራ እቅድ</h1>
+      <div class="header-actions">
+        <button id="editToggleBtn" class="edit-btn" onclick="toggleEdit()">እቅዱን ማስተካከል (Edit Plan)</button>
+        <button class="logout-btn" onclick="logout()">ውጣ (Logout)</button>
+      </div>
+    </div>
+    
+    <div class="meta-info">
+      <strong>የበጀት ዓመት:</strong> 2019 ዓ.ም &nbsp;|&nbsp; 
+      <strong>ተቋም:</strong> ቤላ ጤና ጣቢያ &nbsp;|&nbsp; 
+      <strong>አዘጋጅ:</strong> አበበ ምህረት (የአይቲ ባለሙያ)[cite: 1]
+    </div>
+
+    <!-- EDITABLE CONTENT AREA -->
+    <div class="plan-content" id="editablePlanArea" contenteditable="false">
+      
+      <h2>1. ማጠቃለያ እና መግቢያ</h2>
+      <h3>1.1 ማጠቃለያ (Executive Summary)</h3>
+      <p>ይህ አመታዊ የስራ እቅድ የቤላ ጤና ጣቢያን አጠቃላይ የህክምና፣ የአስተዳደር፣ የፋይናንስ፣ የንብረት፣ የሰው ሀብት፣ የዳታ/HMIS እና የምርመራ/ክትባት ክፍሎች በዲጂታል ቴክኖሎጂ ለመደገፍ የተዘጋጀ ሰነድ ነው[cite: 1]። እቅዱ በዋናነት የመረጃ መረጋጋትን፣ የሰርቨር እና የኔትወርክ አስተማማኝነትን፣ የኤሌክትሮኒክስ ህክምና መረጃ ስርዓትን (EMR/HIS)፣ የፋይናንስ አስተዳደር ሲስተሞችን (IBEX እና iTAP)፣ የፋርማሲ ቁጥጥር ሲስተም (DAGU)፣ የንብረት አስተዳደር portal (AMIS)፣ የሰው ሀብት መረጃ ሲስተም (HRIS/eHRIS)፣ የጤና ዳታ አስተዳደር ሲስተም (DHIS2)፣ የክትባት ክፍል ዲጂታል ሲስተም (EIR / Immunization System)፣ እንዲሁም አጠቃላይ የግቢውን ኢንተርኔት እና ዋይፋይ (Campus-Wide Wi-Fi & Internet) መሠረተ-ልማት ማስተዳደርን አጠቃሎ ይዟል[cite: 1]።</p>
+
+      <h3>1.2 መግቢያ (Introduction)</h3>
+      <p>በጤናው ዘርፍ የሚደረገው የዲጂታል ትራንስፎርሜሽን (Digital Health Transformation) የመልካም አስተዳደር፣ የውሳኔ አሰጣጥ እና የጥራት መለኪያ ሆኗል[cite: 1]። በጤና ጣቢያችን የሚሰጡ የህክምና፣ የክትባት፣ የመድኃኒት፣ የንብረት እና የፋይናንስ አገልግሎቶች ሁሉ በዲጂታል ሲስተም መደገፋቸው የወረቀት አሰራርን (Manual System) ያስቀራል፤ አገልግሎትን ያፋጥናል፤ የመረጃ ስህተቶችንም ይከላከላል[cite: 1]።</p>
+      <p>ለዚህም ስራ በጤና ጣቢያው የተዘረጉትን ውስብስብ የኔትወርክ መሰረተ-ልማቶች (Cat6 cabling, Cisco Switches, D-Link/Ubiquiti Wireless Access Points)፣ የሰርቨር አደረጃጀቶች (HPE ProLiant ML350 Gen10 Server) እና የተለያዩ የመረጃ ስርዓቶችን በተቀናጀ መልኩ ማስተዳደር ያስፈልጋል[cite: 1]።</p>
+      <p>ይህ አመታዊ እቅድ የመሰረተ-ልማት ጥገናዎችን እና የሲስተም ዝመናዎችን ብቻ ሳይሆን፣ የህክምና መረጃዎችን ምስጢራዊነትጠበቅን፣ የሳይበር ደህንነት ስጋቶችን መከላከልን፣ የ CCTV ካሜራዎች ቁጥጥርን እና ሰራተኞች በየጊዜው በሚወጡ አዳዲስ የቴክኖሎጂ አሰራሮች (DHIS2, AMIS, HRIS, EIR) ላይ ብቁ እንዲሆኑ ተከታታይ የስራ ላይ ስልጠናዎችን መስጠትን አጠቃሎ የያዘ መመሪያ ሰነድ ነው[cite: 1]።</p>
+
+      <h2>2. የተቋሙ ራዕይ፣ ተልዕኮ፣ እሴቶች እና የእቅዱ ዓላማ</h2>
+      <h3>2.1 ራዕይ (Vision)</h3>
+      <p>በዘመናዊ የኢንፎርሜሽን ቴክኖሎጂ የተደገፈ፣ የተቀናጀ፣ ደህንነቱ የተጠበቀ እና አርአያነት ያለው የህክምና፣ የፋይናንስ እና የአስተዳደር ዲጂታል አገልግሎት የሚሰጥ የጤና ጣቢያ መሆን[cite: 1]።</p>
+
+      <h3>2.2 ተልዕኮ (Mission)</h3>
+      <p>የላቁ የመረጃና ኮሙኒኬሽን ቴክኖሎጂዎችን በመተግበር የህክምና፣ የፋይናንስ፣ የንብረት፣ የሰው ሀብት እና የክትባት መረጃዎችን በብቃት ማደራጀት፤ የሰርቨር፣ የኔትወርክ እና የኢንተርኔት መሠረተ-ልማቶችን ሳያቋርጡ ስራ ላይ ማዋል፤ እና ሰራተኞችን በስልጠና በመደገፍ ቀልጣፋ የአገልግሎት वातावरण መፍጠር[cite: 1]።</p>
+
+      <h3>2.3 እሴቶች (Core Values)</h3>
+      <ol>
+        <li><strong>የመረጃ ታማኝነት እና ደህንነት (Data Integrity & Confidentiality):</strong> የህመምተኞችን እና የተቋሙን ምስጢራዊ መረጃዎች በጥብቅ ደህንነት መጠበቅ[cite: 1]።</li>
+        <li><strong>አስተማማኝነት እና ዝግጁነት (High Availability & Reliability):</strong> 24/7 የማይቋረጥ የኔትወርክ፣ የኢንተርኔት/ዋይፋይ፣ የሰርቨር እና የሲስተም አገልግሎት ማረጋገጥ[cite: 1]።</li>
+        <li><strong>ተስፋፊነት እና ዘመናዊነት (Innovation & Scalability):</strong> አዳዲስ የቴክኖሎጂ አሰራሮችን በመተግበር አሰራርን ቀጣይነት ባለው መልኩ ማዘመን[cite: 1]።</li>
+        <li><strong>ቅልጥፍና እና ደንበኛ ተኮርነት (Responsiveness & Accountability):</strong> ለውስጥና ለውጭ ተገልጋዮች ፈጣን የቴክኒክ ድጋፍና ምላሽ መስጠት[cite: 1]።</li>
+      </ol>
+
+      <h3>2.4 የእቅዱ ዓላማ (General & Specific Objectives)</h3>
+      <p><strong>ዋና ዓላማ (General Objective):</strong> የቤላ ጤና ጣቢያን አጠቃላይ የህክምና፣ የክትባት፣ የፋይናንስ፣ የፋርማሲ፣ የንብረት፣ የሰው ሀብት እና የHMIS/ዳታ ስራዎች በዲጂታል ቴክኖሎጂ በማቀናጀት የሲስተም ማቋረጥ (Downtime) ሳይኖር፣ የመረጃ ደህንነቱ የተጠበቀ፣ ፈጣን እና ጥራት ያለው የጤና አገልግሎት ለህብረተሰቡ ማቅረብ ነው[cite: 1]።</p>
+      
+      <p style="margin-top: 10px;"><strong>ዝርዝር ዓላማዎች (Specific Objectives):</strong></p>
+      <ol>
+        <li><strong>የኤሌክትሮኒክስ ህክምና መረጃ ስርዓትን (EMR) ሙሉ በሙሉ ማቀናጀት:</strong> የካርድ ክፍል፣ የህክምና ክፍሎች፣ ላቦራቶሪ፣ አልትራሳውንድ፣ ፋርማሲ፣ የክፍያ ቦታዎች፣ የድንገተኛ ህክምና ክፍል እንዲሁም ሌሎችም ክፍሎች እርስ በእርስ በኔትወርክ ተያይዘው ያለ እንከን የመረጃ ልውውጥ እንዲያደርጉ ማድረግ[cite: 1]።</li>
+        <li><strong>የፋይናንስ፣ የንብረት እና የሰው ሀብት ሲስተሞችን ማጠናከር:</strong>
+          <ul>
+            <li>በ IBEX እና iTAP የበጀት፣ የክፍያ እና የታክስ መረጃዎች በትክክል መመዝገባቸውን ማረጋገጥ[cite: 1]።</li>
+            <li>በ AMIS Portal የተቋሙ ንብረቶች፣ የስራ እቃዎች እና የንብረት እንቅስቃሴዎች በዲጂታል መንገድ እንዲመዘገቡ ማድረግ[cite: 1]።</li>
+            <li>በ eHRIS/HRIS የሰራተኞች የህይወት ታሪክ፣ የትምህርት ደረጃ፣ የስራ ቦታ እድገት እና ፈቃዶች በዲጂታል መንገድ እንዲደራጁ ማገዝ[cite: 1]።</li>
+          </ul>
+        </li>
+        <li><strong>የዳታ/HMIS እና የክትባት ክፍል ሲስተሞችን መደገፍ:</strong>
+          <ul>
+            <li>የጤና መረጃዎች በ DHIS2 (District Health Information Software 2) ሲስተም በወቅቱ፣ በትክክል እና በጥራት እንዲመዘገቡ የቴክኒክ እና የኢንተርኔት ድጋፍ መስጠት[cite: 1]።</li>
+            <li>በክትባት ክፍል የህፃናት እና የእናቶች የክትባት መረጃ የሚመዘገብበትን የዲጂታል ክትባት ሲስተም (EIR / Electronic Immunization Registry) ኔትወርክ ድጋፍ ማድረግ[cite: 1]።</li>
+          </ul>
+        </li>
+        <li><strong>የመሰረተ-ልማት፣ የኢንተርኔት እና የዋይፋይ ተዳራሽነትን ማረጋገጥ:</strong>
+          <ul>
+            <li>ሙሉ የግቢውን የብሮድባንድ ኢንተርኔት (Broadband) እና የገመድ አልባ የዋይፋይ (Wireless Wi-Fi / Access Points) መስመሮች አስተማማኝነት ማረጋገጥ[cite: 1]።</li>
+            <li>የ HPE ProLiant ML350 Gen10 ሰርቨርን ጤንነት መከታተል፣ RAID Logical Drives ደህንነትን መጠበቅ እና ሳምንታዊ/ቀን ተቀን የመረጃ ባካፕ (Backup) መውሰድ[cite: 1]።</li>
+          </ul>
+        </li>
+        <li><strong>የሰው ኃይል ዲጂታል ክህሎት ማሳደግ (Capacity Building):</strong> ለጤና ባለሙያዎች፣ ለፋይናንስ፣ ለፋርማሲ፣ ለንብረት፣ ለሰው ሀብት እና ለHMIS ሰራተኞች በየሲስተሞቹ እና በሳይበር ደህንነት ዙሪያ ተከታታይ ስልጠናዎችን መስጠት[cite: 1]።</li>
+      </ol>
+
+      <h3>2.5 የእቅዱ አስፈላጊነት (Rationale)</h3>
+      <ul>
+        <li>የወረቀት አሰራርን በመቀነስ የህመምተኞችን የጥበቃ ጊዜ በእጅጉ ለማሳለጥ[cite: 1]።</li>
+        <li>የመድኃኒት ብክነትን፣ የንብረት ስረቃን እና የፋይናንስ ስህተቶችን በዲጂታል ቁጥጥር ለመከላከል (በ DAGU, AMIS, IBEX, iTAP)[cite: 1]።</li>
+        <li>የሀገር አቀፍ የጤና ሪፖርቶች (HMIS / DHIS2) በጥራት እና በወቅቱ እንዲላኩ ለማስቻል፤ የክትባት ሽፋን መረጃዎችን በዲጂታል መንገድ ለመከታተል[cite: 1]።</li>
+        <li>የተቋሙን የሃርድዌር ሀብቶች እድሜ ለማራዘም እና መረጃዎች እንዳይጠፉ አስተማማኝ የመጠባበቂያ (Backup) ስርዓት ለመዘርጋት[cite: 1]።</li>
+      </ul>
+
+      <h2>3. ቁልፍ ተግባራት አፈጻጸም አቅጣጫ</h2>
+      <h3>3.1 ከውጭ ተገልጋይ (ህመምተኞች) አንጻር</h3>
+      <ul>
+        <li><strong>የአገልግሎት ፍጥነትና እንግልት መቀነስ:</strong> የ EMR፣ የክትባት ሲስተም (EIR)፣ የፋርማሲ እና የክፍያ ሲስተሞች በመቀናጀታቸው ተገልጋዮች በአጭር ጊዜ ታክመው እና መድኃኒት ተቀብለው እንዲወጡ ማድረግ[cite: 1]።</li>
+        <li><strong>የህክምና መረጃ ደህንነት:</strong> የህመምተኞች ታሪክ እና የህክምና መረጃዎች ለሶስተኛ ወገን እንዳይጋለጡ የሳይበር ደህንነት እና የፓስወርድ ጥበቃን ማጠናከር[cite: 1]።</li>
+        <li><strong>ደህንነቱ የተጠበቀ ግቢ:</strong> የተቋሙን ሰላምና ደህንነት ለመጠበቅ የ CCTV ካሜራዎችን 24/7 ንቁ ማድረግ[cite: 1]።</li>
+      </ul>
+
+      <h3>3.2 ከውስጥ ተገልጋይ (የጤና ጣቢያው ሰራተኞች እና አመራሮች) አንጻር</h3>
+      <ul>
+        <li><strong>ቀልጣፋ የአይቲ እገዛ (IT Helpdesk):</strong> የኮምፒውተር፣ የፕሪንተር፣ የሲስተም እና የኢንተርኔት/ዋይፋይ ብልሽቶችን በደቂቃዎች ውስጥ መፍታት[cite: 1]።</li>
+        <li><strong>በስልጠና አቅምን ማሳደግ:</strong> ለጤና ባለሙያዎች፣ ለንብረት፣ ለሰው ሀብት፣ ለፋይናንስ እና ለፋርማሲ ሰራተኞች በየሲስተሞቹ አጠቃቀም ላይ ተከታታይ የስራ ላይ ስልጠና መስጠት[cite: 1]።</li>
+        <li><strong>የውሳኔ አሰጣጥ ድጋፍ:</strong> ለአመራሩ ትክክለኛ የህክምና እና የፋይናንስ ሪፖርቶችን (DHIS2/SD1 reporting, AMIS, HRIS, IBEX) በወቅቱ ማዘጋጀት[cite: 1]።</li>
+      </ul>
+
+      <h2>4. አጠቃላይ የጤና ጣቢያው የአይቲ ክፍል ዝርዝር ስራዎች</h2>
+      <h3>4.1 የፋይናንስ፣ የንብረት እና የሰው ሀብት ሲስተሞች አስተዳደር</h3>
+      <ol>
+        <li><strong>የፋይናንስ ሲስተሞች (IBEX እና iTAP):</strong>
+          <ul>
+            <li>የ IBEX እና iTAP ሶፍትዌርና ዳታቤዝ በትክክል መስራቱን መከታተል እና ድጋፍ መስጠት[cite: 1]።</li>
+            <li>የበጀት፣ የሂሳብ እና የታክስ ሰራተኞች የሚያጋጥሟቸውን የቴክኒክ እና የግንኙነት (Connectivity) ችግሮች መፍታት[cite: 1]።</li>
+          </ul>
+        </li>
+        <li><strong>የንብረት አስተዳደር ሲስተም (AMIS Portal):</strong>
+          <ul>
+            <li>የ Asset Management Information System (AMIS) ፖርታል መረጋጋቱን እና የኔትወርክ ትስስሩን ማረጋገጥ[cite: 1]።</li>
+            <li>የጤና ጣቢያው ንብረቶች፣ አዳዲስ የገቡ እቃዎች፣ የስራ እቃዎች ስርጭት እና የንብረት በር ማለፊያ (Gate Pass) በ AMIS በኩል በትክክል መመዝገባቸውን መደገፍ[cite: 1]።</li>
+          </ul>
+        </li>
+        <li><strong>የሰው ሀብት አስተዳደር ሲስተም (HRIS / eHRIS):</strong>
+          <ul>
+            <li>የ HRIS ሲስተም መስመሮች እና የመረጃ ቋት ደህንነታቸው የተጠበቀ መሆኑን መከታተል[cite: 1]።</li>
+            <li>የሰራተኞች ፋይል፣ የቅጥር፣ የደረጃ እድገት እና የፍቃድ መረጃዎች በሰው ሀብት ክፍል ሲመዘገቡ የመጀመሪያ ደረጃ የቴክኒክ ድጋፍ መስጠት[cite: 1]።</li>
+          </ul>
+        </li>
+      </ol>
+
+      <h3>4.2 የዳታ/HMIS (DHIS2) እና የክትባት ክፍል ሲስተሞች</h3>
+      <ol>
+        <li><strong>የዳታ ክፍል (DHIS2 System) ድጋፍ:</strong>
+          <ul>
+            <li>የ DHIS2 (District Health Information Software 2) ፖርታል ያለ እንከን እንዲሰራ አስተማማኝ የኢንተርኔት መስመር ማቅረብ[cite: 1]።</li>
+            <li>የወርሃዊ የጤና መረጃዎች (HMIS reports / SD1) ወደ DHIS2 በሚጫኑበት ጊዜ የሚፈጠሩ የብሮውዘር፣ የኔትወርክ እና የሲስተም አክሰስ ችግሮችን መፍታት[cite: 1]።</li>
+          </ul>
+        </li>
+        <li><strong>የክትባት ክፍል ሲስተም (EIR / Immunization Registry):</strong>
+          <ul>
+            <li>የክትባት ክፍል ዲጂታል መመዝገቢያ (EIR / eCS) ኮምፒውተሮች እና ታብሌቶች ከጤና ጣቢያው ኔትወርክ ጋር መገናኘታቸውን ማረጋገጥ[cite: 1]።</li>
+          </ul>
+        </li>
+      </ol>
+
+      <h3>4.3 የፋርማሲ እና የህክምና መረጃ ሲስተሞች (DAGU እና EMR)</h3>
+      <ol>
+        <li><strong>የ DAGU ፋርማሲ ሲስተም:</strong> በመጋዘን እና በፋርማሲዎች ድጋፍ መስጠት[cite: 1]።</li>
+        <li><strong>የ EMR/HIS ሲስተም:</strong> የስራ ክፍሎች ከሚመለከታቸው ክፍሎች የታካሚ መረጃ በ EMR የተሳሰሩ መሆናቸውን መከታተል፤ የትኛውንም EMR ሲስተም ድጋፍ እና ክትትል ማድረግ[cite: 1]።</li>
+      </ol>
+
+      <h3>4.4 የሙሉ ግቢ ኢንተርኔት እና ዋይፋይ (Campus-Wide Wi-Fi & Internet) መሠረተ-ልማት</h3>
+      <ol>
+        <li><strong>የኢንተርኔት መስመር አስተዳደር (ISP & Bandwidth Management):</strong>
+          <ul>
+            <li>የተቋሙን የብሮድባንድ/ፋይበር ኢንተርኔት መስመር መከታተል፤ የባንድዊድዝ (Bandwidth) ክፍፍልን ማስተካከል (ለአስፈላጊ ክፍሎች ቅድሚያ መስጠት)[cite: 1]።</li>
+          </ul>
+        </li>
+        <li><strong>የገመድ አልባ ዋይፋይ (Wi-Fi Access Points) ዝርጋታ እና ጥገና:</strong>
+          <ul>
+            <li>በየክፍሎቹ (አስተዳደር፣ ህክምና ክፍሎች፣ ላቦራቶሪ፣ ፋርማሲ፣ ዳታ ክፍል) የተገጠሙ D-Link / Ubiquiti Access Pointዎችን መከታተል[cite: 1]።</li>
+            <li>የግቢው የዋይፋይ ሽፋን (Wi-Fi Coverage) ጠንካራ መሆኑን ማረጋገጥ፤ የይለፍ ቃል (Wi-Fi Password) ደህንነትን መጠበቅ እና ያልተፈቀዱ ሰዎች ገብተው ኢንተርኔቱን እንዳያጨናንቁ መቆጣጠር[cite: 1]።</li>
+          </ul>
+        </li>
+      </ol>
+
+      <h3>4.5 የሰርቨር፣ ኔትወርክ እና የ CCTV ካሜራ ጥገና</h3>
+      <ol>
+        <li><strong>የ HPE ProLiant ML350 Gen10 ሰርቨር አስተዳደር:</strong> የሰርቨር ሃርድዌር አፈጻጸም፣ RAID Logical Drive Recovery፣ የ UEFI Boot Order እና የ Windows Server አስተዳደርን መከታተል[cite: 1]።</li>
+        <li><strong>የኔትወርክ መስመሮች ጥገና:</strong> Cat6 ኬብሎች፣ Patch Panels፣ Faceplates እና RJ45 ኮኔክተሮችን በ Cable Tester እና Tone Generator መፈተሽ እና መጠገን[cite: 1]።</li>
+        <li><strong>የ Hikvision CCTV ካሜራዎች አስተዳደር:</strong> የ NVR/DVR አስተዳደር፣ የካሜራዎችን እይታ ማስተካከል እና የደህንነት ምስሎችን በ NVR ሃርድዲስክ መጠበቅ[cite: 1]።</li>
+      </ol>
+
+      <h2>5. አጠቃላይ የሰራተኞች የስልጠና እና አቅም ግንባታ መርሃ-ግብር</h2>
+      <ul>
+        <li>EMR ሲስተሞች አጠቃቀም ላይ ለነባር እና አዳዲስ ሰራተኞች የሚሰጥ ስልጠና[cite: 1]።</li>
+        <li><strong>የሳይበር ደህንነት እና የመረጃ ሚስጥራዊነት (Cybersecurity Awareness):</strong> ለጠቅላላ ሰራተኞች ስለ የይለፍ ቃል ጥበቃ፣ የጎጂ ሶፍትዌሮች (Phishing/Virus) መከላከል እና የህመምተኞች መረጃ ምስጢራዊነት ላይ የሚሰጥ ግንዛቤ[cite: 1]።</li>
+      </ul>
+
+      <h2>6. የሃርድዌር፣ የሶፍትዌር እና የመሰረተ-ልማት ፍላጎት ስፔስፊኬሽን</h2>
+      <ol>
+        <li><strong>የኔትወርክ እና ዋይፋይ እቃዎች:</strong>
+          <ul>
+            <li>Cat6 UTP Cables (Rolls)[cite: 1]</li>
+            <li>High-Power Access Points (D-Link/Ubiquiti/TP-Link) — የዋይፋይ ሽፋንን ለማስፋፋት[cite: 1]</li>
+            <li>24-Port Gigabit Managed Switches (Cisco)[cite: 1]</li>
+            <li>RJ45 Connectors, Faceplates, Keystone Jacks[cite: 1]</li>
+          </ul>
+        </li>
+        <li><strong>የሰርቨር እና የሃርድዌር መለዋወጫዎች:</strong>
+          <ul>
+            <li>HPE Server Hard Drives (SAS/SATA Hot-Plug)[cite: 1]</li>
+            <li>1500VA – 3000VA Online UPS (ለሰርቨር፣ ለዋና ስዊቾች እና ለዋይፋይ ራውተሮች)[cite: 1]</li>
+            <li>Thermal Receipt Printers and Barcode Scanners[cite: 1]</li>
+          </ul>
+        </li>
+        <li><strong>የጥገና መሳሪያዎች:</strong>
+          <ul>
+            <li>Network Cable Tester, Tone Generator & Probe Kit[cite: 1]</li>
+            <li>Punch Down Tool & Crimping Pliers[cite: 1]</li>
+            <li>Blower / Dust Cleaner (ለጽዳት)[cite: 1]</li>
+          </ul>
+        </li>
+      </ol>
+
+      <h2>7. የአደጋ ጊዜ መቋቋሚያ እና የመረጃ ማዳን ስትራቴጂ (Disaster Recovery Plan)</h2>
+      <ol>
+        <li><strong>የመረጃ ባካፕ (Data Backup Routine):</strong>
+          <ul>
+            <li>በየቀኑ (Daily): የ EMR ዳታቤዝ አውቶማቲክ ባካፕ መውሰድ[cite: 1]።</li>
+          </ul>
+        </li>
+        <li><strong>የሃርድዌር እና የኢንተርኔት ድገምታ (Redundancy):</strong>
+          <ul>
+            <li>በ HPE ProLiant Gen10 ሰርቨር ላይ RAID Logical Drives በመጠቀም የአንዱ ሃርድዲስክ ብልሽት አጠቃላይ ሲስተሙን እንዳያስተጓጉል ማድረግ[cite: 1]።</li>
+            <li>የዋይፋይ Access Pointዎች አንዱ ቢበላሽ ሌላው መሸፈን የሚችልበትን አደረጃጀት መዘርጋት[cite: 1]።</li>
+          </ul>
+        </li>
+      </ol>
+
+      <h2>8. የክትትል፣ የግምገማ እና የሪፖርት አቀራረብ ስርዓት</h2>
+      <ol>
+        <li><strong>የቀን ተቀን ክትትል (Daily Monitoring):</strong> የሰርቨር፣ የኔትወርክ፣ የኢንተርኔት/ዋይፋይ፣ የ EMR፣ የ DAGU፣ የ AMIS፣ የ DHIS2 እና የ CCTV ክፍት መሆንን በየቀኑ ጠዋት መፈተሽ[cite: 1]።</li>
+        <li><strong>ወርሃዊ ግምገማ (Monthly Review):</strong> በየወሩ ያጋጠሙ የአይቲ ብልሽቶችን፣ የተሰጡ የቴክኒክ ድጋፎችን እና የተከናወኑ ጥገናዎችን ሪፖርት ማቅረብ[cite: 1]።</li>
+        <li><strong>የሩብ አመት ግምገማ (Quarterly Performance Assessment):</strong> ከእቅዱ አንጻር የተከናወኑ ስራዎችን መገምገም እና ጉድለቶችን ማስተካከል[cite: 1]።</li>
+      </ol>
+
+      <h2>9. የሩብ ዓመት ዝርዝር የድርጊት መርሃ ግብር (Quarterly Action Plan)</h2>
+      <table>
+        <thead>
+          <tr>
+            <th style="width: 8%;">ተ.ቁ</th>
+            <th style="width: 52%;">ዝርዝር ተግባራት እና መርሃ-ግብር</th>
+            <th class="center-text" style="width: 10%;">1ኛ ሩብ</th>
+            <th class="center-text" style="width: 10%;">2ኛ ሩብ</th>
+            <th class="center-text" style="width: 10%;">3ኛ ሩብ</th>
+            <th class="center-text" style="width: 10%;">4ኛ ሩብ</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="background: #f8fafc; font-weight: bold;">
+            <td>1</td>
+            <td>የአስተዳደር፣ ፋይናንስ፣ ንብረት እና HRIS ሲስተሞች</td>
+            <td></td><td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <td>1.1</td>
+            <td>የ IBEX, iTAP, AMIS Portal እና HRIS/eHRIS ሲስተም የቴክኒክ ፍተሻና የኔትወርክ ትስስር</td>
+            <td class="center-text">X</td>
+            <td class="center-text">X</td>
+            <td class="center-text">X</td>
+            <td class="center-text">X</td>
+          </tr>
+          <tr>
+            <td>1.2</td>
+            <td>ለፋይናንስ፣ ለንብረት እና ለሰው ሀብት ሰራተኞች በሲስተሞች አጠቃቀም ላይ ስልጠና መስጠት</td>
+            <td class="center-text">X</td>
+            <td class="center-text"></td>
+            <td class="center-text">X</td>
+            <td class="center-text"></td>
+          </tr>
+          <tr style="background: #f8fafc; font-weight: bold;">
+            <td>2</td>
+            <td>የዳታ (DHIS2)፣ የክትባት (EIR) እና የፋርማሲ ሲስተሞች</td>
+            <td></td><td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <td>2.1</td>
+            <td>የ DHIS2 ፖርታል የኢንተርኔት ትስስር የቴክኒክ ድጋፍ</td>
+            <td class="center-text">X</td>
+            <td class="center-text">X</td>
+            <td class="center-text">X</td>
+            <td class="center-text">X</td>
+          </tr>
+          <tr>
+            <td>2.2</td>
+            <td>የክትባት ክፍል ሲስተም (EIR) መሳሪያዎች ፍተሻ</td>
+            <td class="center-text">X</td>
+            <td class="center-text">X</td>
+            <td class="center-text">X</td>
+            <td class="center-text">X</td>
+          </tr>
+          <tr>
+            <td>2.3</td>
+            <td>የ DAGU ፋርማሲ ሲስተም ዝርጋታ</td>
+            <td class="center-text">X</td>
+            <td class="center-text">X</td>
+            <td class="center-text">X</td>
+            <td class="center-text">X</td>
+          </tr>
+          <tr style="background: #f8fafc; font-weight: bold;">
+            <td>3</td>
+            <td>የኢንተርኔት፣ ዋይፋይ እና ኔትወርክ መሠረተ-ልማት</td>
+            <td></td><td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <td>3.1</td>
+            <td>የብሮድባንድ ኢንተርኔት እና የግቢውን የዋይፋይ Access Points ፍተሻና ማሻሻያ</td>
+            <td class="center-text">X</td>
+            <td class="center-text">X</td>
+            <td class="center-text">X</td>
+            <td class="center-text">X</td>
+          </tr>
+          <tr>
+            <td>3.2</td>
+            <td>የ Cat6 ኬብሎች፣ Cisco Switches እና የኔትወርክ ኖዶች ጥገና</td>
+            <td class="center-text">X</td>
+            <td class="center-text">X</td>
+            <td class="center-text">X</td>
+            <td class="center-text">X</td>
+          </tr>
+          <tr>
+            <td>3.3</td>
+            <td>የ HPE ProLiant Gen10 ሰርቨር ጤንነት፣ RAID Status እና የዳታ ባካፕ (Backup)</td>
+            <td class="center-text">X</td>
+            <td class="center-text">X</td>
+            <td class="center-text">X</td>
+            <td class="center-text">X</td>
+          </tr>
+          <tr>
+            <td>3.4</td>
+            <td>የ Hikvision CCTV ካሜራዎች እና NVR HDD ፍተሻና ጥገና</td>
+            <td class="center-text">X</td>
+            <td class="center-text">X</td>
+            <td class="center-text">X</td>
+            <td class="center-text">X</td>
+          </tr>
+          <tr>
+            <td>3.5</td>
+            <td>ለጠቅላላ ሰራተኞች በሳይበር ደህንነት እና መረጃ ምስጢራዊነት ላይ ስልጠና መስጠት</td>
+            <td class="center-text"></td>
+            <td class="center-text">X</td>
+            <td class="center-text"></td>
+            <td class="center-text">X</td>
+          </tr>
+          <tr style="background: #f8fafc; font-weight: bold;">
+            <td>4</td>
+            <td>የሃርድዌር ጥገና እና የሶፍትዌር ልማት</td>
+            <td></td><td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <td>4.1</td>
+            <td>የኮምፒውተር፣ ፕሪንተር እና ባርኮድ ስካነሮች መደበኛ ጥገና (Preventive Maint.)</td>
+            <td class="center-text">X</td>
+            <td class="center-text">X</td>
+            <td class="center-text">X</td>
+            <td class="center-text">X</td>
+          </tr>
+          <tr>
+            <td>4.2</td>
+            <td>የውስጥ አፕሊኬሽኖች (IT Helpdesk Portal, Shift Handover App) ማበጀት</td>
+            <td class="center-text"></td>
+            <td class="center-text">X</td>
+            <td class="center-text"></td>
+            <td class="center-text">X</td>
+          </tr>
+          <tr style="background: #f8fafc; font-weight: bold;">
+            <td>5</td>
+            <td>ግምገማ እና ሪፖርት አቀራረብ</td>
+            <td></td><td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <td>5.1</td>
+            <td>የሩብ ዓመት እና የአመቱ መጨረሻ የአይቲ አፈጻጸም ሪፖርት ማዘጋጀት</td>
+            <td class="center-text">X</td>
+            <td class="center-text">X</td>
+            <td class="center-text">X</td>
+            <td class="center-text">X</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>10. ማጠቃለያ እና የማጽደቂያ ክፍል</h2>
+      <p>ይህ አመታዊ እቅድ በቤላ ጤና ጣቢያ የሚሰጡትን የህክምና፣ የክትባት፣ የፋይናንስ፣ የፋርማሲ፣ የንብረት፣ የሰው ሀብት እና የHMIS/ዳታ አገልግሎቶች በዲጂታል መንገድ በማዘመን የተቋሙን ቅልጥፍና እና የአገልግሎት ጥራት ለማሳደግ ታስቦ የተዘጋጀ ነው[cite: 1]። እቅዱ በተቀመጠለት ጊዜና በጀት ተተግብሮ ውጤታማ እንዲሆን የተቋሙ አመራር አስፈላጊውን የቁሳቁስ እና የበጀት ድጋፍ እንዲያደርግ ይጠየቃል[cite: 1]።</p>
+
+      <div class="signature-section">
+        <div class="sig-box">
+          <p><strong>እቅዱን ያዘጋጀው የአይቲ ባለሙያ:</strong>[cite: 1]</p>
+          <p>ስም: አበበ ምህረት[cite: 1]</p>
+          <p>የስራ መደብ: የአይቲ ባለሙያ (IT Specialist)[cite: 1]</p>
+          <p>ፊርማ: _______________________[cite: 1]</p>
+          <p>ቀን: _________________________[cite: 1]</p>
+        </div>
+        <div class="sig-box">
+          <p><strong>እቅዱን ያጸደቀው የጤና ጣቢያው ዋና ሥራ መራች /ኃላፊ:</strong>[cite: 1]</p>
+          <p>ስም: _______________________[cite: 1]</p>
+          <p>የስራ መደብ: የቤላ ጤና ጣቢያ ዋና ኃላፊ[cite: 1]</p>
+          <p>ፊርማ: _______________________[cite: 1]</p>
+          <p>ቀን: _________________________[cite: 1]</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 5. FEEDBACK SECTION -->
+    <div class="feedback-section">
+      <h2>አስተያየት ይስጡ (Feedback)</h2>
+      <div id="thanksMsg" class="thanks-msg">
+        አስተያየት ስለሰጡን እናመሰግናለን!
+      </div>
+      <form id="feedbackForm" onsubmit="return handleFeedback(event)">
+        <div class="input-field">
+          <label for="commenterName">ሙሉ ስም</label>
+          <input type="text" id="commenterName" placeholder="ስምዎን እዚህ ያስገቡ..." required>
+        </div>
+        <div class="input-field">
+          <label for="commentText">የእርስዎ አስተያየት</label>
+          <textarea id="commentText" rows="4" placeholder="እቅዱን በተመለከተ አስተያየትዎን እዚህ ይጻፉ..." required></textarea>
+        </div>
+        <button type="submit" class="btn" style="background: #16a34a;">አስተያየት ላክ (Submit)</button>
+      </form>
+    </div>
+
+  </div>
+
+  <!-- JAVASCRIPT LOGIC -->
+  <script>
+    // 1. Handle Login
+    function handleLogin(event) {
+      event.preventDefault();
+      
+      const user = document.getElementById('username').value.trim();
+      const pass = document.getElementById('password').value.trim();
+      const error = document.getElementById('errorMsg');
+      const loginWrapper = document.getElementById('loginWrapper');
+      const welcomeContainer = document.getElementById('welcomeContainer');
+
+      // Credentials (IT / 12345)
+      if (user === "IT" && pass === "12345") {
+        error.style.display = "none";
+        loginWrapper.style.display = "none";
+        welcomeContainer.style.display = "block";
+      } else {
+        error.style.display = "block";
+      }
+
+      return false;
+    }
+
+    // 2. Show Plan Document
+    function showPlan() {
+      document.getElementById('welcomeContainer').style.display = "none";
+      document.getElementById('planContainer').style.display = "block";
+    }
+
+    // 3. Toggle Plan Editing Mode
+    function toggleEdit() {
+      const area = document.getElementById('editablePlanArea');
+      const btn = document.getElementById('editToggleBtn');
+      
+      if (area.contentEditable === "true") {
+        area.contentEditable = "false";
+        area.classList.remove('editing-active');
+        btn.innerText = "እቅዱን ማስተካከል (Edit Plan)";
+        btn.style.background = "#16a34a";
+        alert("የተስተካከለው እቅድ በትክክል ተቀምጧል!");
+      } else {
+        area.contentEditable = "true";
+        area.classList.add('editing-active');
+        btn.innerText = "ለውጦችን አስቀምጥ (Save Plan)";
+        btn.style.background = "#eab308";
+        area.focus();
+      }
+    }
+
+    // 4. Handle Feedback Submission
+    function handleFeedback(event) {
+      event.preventDefault();
+      document.getElementById('feedbackForm').style.display = "none";
+      document.getElementById('thanksMsg').style.display = "block";
+      return false;
+    }
+
+    // 5. Handle Logout
+    function logout() {
+      document.getElementById('planContainer').style.display = "none";
+      document.getElementById('welcomeContainer').style.display = "none";
+      document.getElementById('loginWrapper').style.display = "flex";
+      
+      // Reset Edit Mode
+      const area = document.getElementById('editablePlanArea');
+      const btn = document.getElementById('editToggleBtn');
+      area.contentEditable = "false";
+      area.classList.remove('editing-active');
+      btn.innerText = "እቅዱን ማስተካከል (Edit Plan)";
+      btn.style.background = "#16a34a";
+
+      // Reset Inputs
+      document.getElementById('username').value = "";
+      document.getElementById('password').value = "";
+      document.getElementById('commenterName').value = "";
+      document.getElementById('commentText').value = "";
+      document.getElementById('errorMsg').style.display = "none";
+      document.getElementById('feedbackForm').style.display = "block";
+      document.getElementById('thanksMsg').style.display = "none";
+    }
+  </script>
+
+</body>
+</html>
